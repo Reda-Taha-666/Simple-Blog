@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="{% static 'CSS/post.css' %}">
+    <title>مدونتي البسيطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+  </head>
+<body>
+    {% include "include/navbar.html" %}
+
+
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="400">
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+
+    <p>{{ post.description|linebreaks }}</p>
+    <small>نُشرت في: {{ post.created_at }}</small>
+    <br><br>
+    {% comment %} <a href="{% url 'home' %}">الرجوع للصفحة الرئيسية</a> {% endcomment %}
+
+    {% include "include/footer.html" %}
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    <title>مدونتي البسيطة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+  </head>
+  <body class="bg-gray-50">
+    <!-- شريط التنقل -->
+     <!-- Navigation-->
+    
+    {% include "include/navbar.html" %}
+
+
+
+    <!-- القسم الرئيسي -->
+    <header class="bg-white min-h-[90vh] flex items-center">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
+        <div class="text-center">
+          <h1
+            class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl"
+          >
+            <span class="block">مرحباً بكم في مدونتي</span>
+          </h1>
+          <p
+            class="mt-6 max-w-xl mx-auto text-lg text-gray-500 sm:text-xl md:mt-8 md:text-2xl"
+          >
+            مكان لتبادل الأفكار والمعرفة والخبرات في مختلف المواضيع التقنية
+            والتطويرية.
+          </p>
+          <a href="{% url 'all_posts' %}">
+          <button 
+            class="mt-12 px-8 py-4 bg-blue-600 text-white font-medium text-lg rounded-lg hover:bg-blue-700 transition duration-300">
+            ابدأ القراءة
+          </button>
+        </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- المقالات -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- المقال الأول -->
+
+{% include "pages/articles.html" %}
+       
+
+      <!-- زر عرض المزيد -->
+       <br>
+        <a href="{% url 'all_posts' %}">
+      <div class="mt-12 text-center">
+        <button href="{% url 'all_posts' %}"
+          class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
+          عرض المزيد من المقالات
+        </button>
+      </div>
+    </a>
+    </main>
+
+    <!-- تذييل الصفحة -->
+{% include "include/footer.html" %}
+
+  <script src="{% static 'js/scripts.js' %}"></script>
+  </body>
+</html>

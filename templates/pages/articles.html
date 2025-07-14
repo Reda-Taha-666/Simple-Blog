@@ -1,0 +1,23 @@
+<!-- المقال الأول -->
+{% for post in posts %}
+<article
+  class="blog-post transition duration-300 ease-in-out bg-white rounded-lg overflow-hidden shadow-md">
+
+  <img
+    {% comment %} src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bfa2046b-7a6e-444e-bfc3-936f8690df0f.png" {% endcomment %}
+    src="{{ post.image.url }}"
+    alt={{ post.title }}"
+    class="w-full h-48 object-cover"
+  />
+  <div class="p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-2">{{ post.title }}</h2>
+    <p class="text-gray-600 mb-4">
+{{ post.description|truncatechars:150 }}</p>
+    <div class="flex justify-between items-center">
+      <span class="text-sm text-gray-500">{{ post.created_at }}</span>
+      <a href="{% url 'post_detail' post.id %}" class="text-blue-600 hover:text-blue-800 text-sm font-medium">اقرأ المزيد →</a
+      >
+    </div>
+  </div>
+</article>
+{% endfor %}
